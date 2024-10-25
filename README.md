@@ -100,7 +100,18 @@ docker compose -f docker-compose-lightweight.yml up --build -d
 pnpm install
 ```
 
-2. Run the necessary services the way you see fit:
+2. Build shared package:
+
+>[!WARNING]
+> To comfortably work in dev mode, run `pnpm build:watch` in a separate terminal inside `shared` directory. This will keep the package in sync with changes.
+
+Or build it once:
+
+```sh
+cd shared && pnpm build
+```
+
+3. Run the necessary services the way you see fit:
 
 ```sh
 cd services/api-gateway
