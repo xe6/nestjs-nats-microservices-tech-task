@@ -4,6 +4,9 @@
 
 node_modules
 dist
+
+*.md
+
 # Ignore editor and IDE settings
 .vscode
 .idea

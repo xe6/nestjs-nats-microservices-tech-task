@@ -28,7 +28,7 @@ cp services/hubspot/.env.example services/hubspot/.env
 > [!WARNING]
 > `services/hubspot/.env` **should be _changed_** to use proper values (your Hubspot OAUTH token).
 
-1. Build the whole thing with docker compose:
+2. Build the whole thing with docker compose:
 
 ```sh
 docker compose up --build -d
@@ -44,9 +44,9 @@ API Gateway exposes single endpoint:
 - Request body:
 ```json
 {
-  "email": "john.doe@hubspot.com",
-  "firstName": "John",
-  "lastName": "Doe"
+  "email": "bh@hubspot.com",
+  "firstName": "Max",
+  "lastName": "R."
 }
 ```
 - `firstName` & `lastName` are both optional
@@ -81,6 +81,7 @@ curl -X PATCH http://localhost:3030/users/1 \
 - Setup monorepo toolchain (`turborepo`, etc.)
 - Avoid 400 & 404 error retries in `hubspot service` (depending on possible data inconsistency cases)
 - Implement a NATS persistence layer (`--jetstream`) for broker retries
+- Additional security measures inside docker containers (e.g. non-root user, sec-focused image, etc.)
 ---
 
 ## Alternative local setup (dockerized NATS + local services)
