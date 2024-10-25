@@ -1,0 +1,9 @@
+# Ignore Git files
+.git
+.gitignore
+
+node_modules
+dist
+# Ignore editor and IDE settings
+.vscode
+.idea

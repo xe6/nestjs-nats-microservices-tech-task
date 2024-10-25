@@ -8,3 +8,42 @@ services:
       - nats.env
     environment:
       - NATS_ENABLE_AUTH=true
+
+  api-gateway:
+    container_name: api-gateway
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: api-gateway # Build the api-gateway stage from Dockerfile
+    ports:
+      - "3030:3030" # Expose port 3030 for api-gateway
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - nats
+
+  user-service:
+    container_name: user-service
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: user-service # Build the user-service stage from Dockerfile
+    environment:
+      - NODE_ENV=production
+      - NATS_URL=nats://nats-tech-task:4222
+    depends_on:
+      - nats
+
+  hubspot-service:
+    container_name: hubspot-service
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: hubspot-service # Build the hubspot-service stage from Dockerfile
+    env_file:
+      - services/hubspot/.env
+    environment:
+      - NODE_ENV=production
+      - NATS_URL=nats://nats-tech-task:4222
+    depends_on:
+      - nats

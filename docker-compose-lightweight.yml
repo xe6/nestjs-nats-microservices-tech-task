@@ -1,0 +1,10 @@
+services:
+  nats:
+    container_name: nats-tech-task
+    image: nats:latest
+    ports:
+      - "4222:4222"
+    env_file:
+      - nats.env
+    environment:
+      - NATS_ENABLE_AUTH=true
