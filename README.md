@@ -79,6 +79,8 @@ curl -X PATCH http://localhost:3030/users/1 \
 - Use real DB
 - Switch to update hubspot contact by `contactId` instead of `email`
 - Setup monorepo toolchain (`turborepo`, etc.)
+- Avoid 400 & 404 error retries in `hubspot service` (depending on possible data inconsistency cases)
+- Implement a NATS persistence layer (`--jetstream`) for broker retries
 ---
 
 ## Alternative local setup (dockerized NATS + local services)
